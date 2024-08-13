@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TEST_DATABASE_URL = os.getenv("TEST_DATABASE_URL")
+print(TEST_DATABASE_URL)
 
 engine = create_engine(TEST_DATABASE_URL) # type: ignore
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

@@ -16,7 +16,7 @@ Base.metadata.create_all(bind=engine)
 async def test_create_movie():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.post("/auth/login", data={
-            "username": "testuser3",
+            "username": "testuser4",
             "password": "password123"
         })
         token = response.json()["access_token"]

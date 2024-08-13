@@ -17,19 +17,19 @@ async def test_register_user():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.post("/auth/register", json={
             "first_name": "test",
-            "last_name": "user3",
-            "username": "testuser3",
-            "email": "testuser3@example.com",
+            "last_name": "user4",
+            "username": "testuser4",
+            "email": "testuser4@example.com",
             "password": "password123"
         })
     assert response.status_code == 201
-    assert response.json()["username"] == "testuser3"
+    assert response.json()["username"] == "testuser4"
 
 @pytest.mark.asyncio
 async def test_login_user():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.post("/auth/login", data={
-            "username": "testuser3",
+            "username": "testuser4",
             "password": "password123"
         })
     assert response.status_code == 200

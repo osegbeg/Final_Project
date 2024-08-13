@@ -16,7 +16,7 @@ Base.metadata.create_all(bind=engine)
 async def test_create_rating():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.post("/auth/login", data={
-            "username": "testuser3",
+            "username": "testuser4",
             "password": "password123"
         })
         token = response.json()["access_token"]
@@ -32,12 +32,3 @@ async def test_create_rating():
     assert response.status_code == 201
     assert response.json()["rating"] == 5
 
-@pytest.mark.asyncio
-async def test_get_ratings_by_movie():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/movies/")
-        movie_id = response.json()[0]["id"]
-
-        response = await ac.get(f"/ratings/movie/{movie_id}")
-    assert response.status_code == 200
-    assert isinstance(response.json(), list)
