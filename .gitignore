@@ -1,3 +1,0 @@
-# ignore the env variable
-.env
-__pycache__/
